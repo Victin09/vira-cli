@@ -1,0 +1,26 @@
+{
+  "name": "vira-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "bin": "./bin/bin.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node ./bin/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/figlet": "^1.5.1",
+    "@types/inquirer": "^7.3.2",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.4"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "figlet": "^1.5.0",
+    "inquirer": "^8.1.1",
+    "ora": "^5.4.1"
+  }
+}
