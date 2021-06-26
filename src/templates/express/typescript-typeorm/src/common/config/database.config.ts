@@ -9,7 +9,7 @@ const databaseConfig: ConnectionOptions = {
     port: Number(process.env.POSTGRES_PORT) || 5432,
     username: process.env.POSTGRES_USER || 'postgres',
     password: process.env.POSTGRES_PASSWORD || 'postgres',
-    database: process.env.POSTGRES_DB || 'express_typeorm_api',
+    database: process.env.POSTGRES_DB || 'express_typeorm',
     entities: [User],
     synchronize: true,
 };

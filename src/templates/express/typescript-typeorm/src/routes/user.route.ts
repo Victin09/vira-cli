@@ -1,10 +1,10 @@
 import express from 'express';
 
 import logger from '../common/config/winston.config';
-import RouterConfig from '../common/config/routes.config';
+import RouterBase from '../common/base/routes.base';
 import UserController from '../controllers/user.controller';
 
-class UserRouter extends RouterConfig {
+class UserRouter extends RouterBase {
     
     constructor(app: express.Application) {
         super(app, 'user-route', '/user');

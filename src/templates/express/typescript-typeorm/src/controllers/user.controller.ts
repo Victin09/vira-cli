@@ -17,15 +17,17 @@ class UserController {
         logger.debug('limit: ' + Number(limit));
         logger.debug('page: ' + page);
         const users: User[] = await userService.list(Number(limit), Number(page));
-        res.json(users);
+        res.send({ 'data': users });
     }
-    find(req: Request, res: Response): Promise<User> {
+    async find(req: Request, res: Response) {
         const { id } = req.params;
-        return userService.find(id);
+        const users: User = await userService.find(id);
+        res.send({ 'data': users });
     }
-    create(req: Request, res: Response): Promise<User> {
+    async create(req: Request, res: Response) {
         const payload: UserDto = req.body;
-        return userService.create(payload);
+        const user: User = await userService.create(payload);
+        res.send({ 'data': user });
     }
     update(req: Request, res: Response): Promise<User> {
         throw new Error('Method not implemented.');

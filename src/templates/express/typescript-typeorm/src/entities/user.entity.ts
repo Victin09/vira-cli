@@ -1,6 +1,7 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import bcrypt from 'bcryptjs';
 
-@Entity()
+@Entity('users')
 class User {
  
     @PrimaryGeneratedColumn()
@@ -19,13 +20,20 @@ class User {
     firstName!: string;
     
     @Column()
-    lastname!: string;
+    lastName!: string;
 
     @CreateDateColumn()
     createdAt?: Date;
 
     @UpdateDateColumn()
     updatedAt?: Date;
+
+    @BeforeInsert()
+    @BeforeUpdate()
+    hashPassword() {
+        const salt: number = Number(process.env.HASH_SALT) || 10;
+        this.password = bcrypt.hashSync(this.password, salt);
+    }
 }
 
 export default User;

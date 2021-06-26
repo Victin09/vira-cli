@@ -1,4 +1,5 @@
-import { getRepository } from 'typeorm';
+import { plainToClass } from 'class-transformer';
+import { getRepository, Repository } from 'typeorm';
 
 import logger from '../common/config/winston.config';
 import UserDto from '../common/dto/user.dto';
@@ -18,10 +19,12 @@ class UserService implements Crud<User, UserDto> {
         });
     }
     find(id: string): Promise<User> {
-        throw new Error('Method not implemented.');
+        return getRepository(User).findOneOrFail({ id: id });
     }
     create(payload: UserDto): Promise<User> {
-        throw new Error('Method not implemented.');
+        const userRepository: Repository<User> = getRepository(User);
+        const user: User = userRepository.create(payload);
+        return userRepository.save(user);
     }
     update(id: string, payload: UserDto): Promise<User> {
         throw new Error('Method not implemented.');

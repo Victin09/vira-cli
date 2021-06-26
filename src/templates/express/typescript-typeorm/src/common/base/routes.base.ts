@@ -1,6 +1,6 @@
 import express from 'express';
 
-abstract class RouterConfig {
+abstract class RouterBase {
     app: express.Application;
     routeName: string;
     routeEndpoint: string;
@@ -15,4 +15,4 @@ abstract class RouterConfig {
     abstract configureRoutes(): express.Application;
 }
 
-export default RouterConfig;
+export default RouterBase;
