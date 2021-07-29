@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "bin": "./bin/bin.ts",
+  "bin": {
+    "vira-cli": "./bin/bin.ts"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node ./bin/index.ts"
@@ -14,6 +16,7 @@
   "devDependencies": {
     "@types/figlet": "^1.5.1",
     "@types/inquirer": "^7.3.2",
+    "@types/node": "^16.4.7",
     "eslint": "^7.31.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",

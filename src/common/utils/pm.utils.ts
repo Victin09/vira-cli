@@ -3,6 +3,7 @@ import ora from 'ora';
 import chalk from 'chalk';
 
 import MESSAGES from '../constants/messages.cosntants';
+import { removeFolder } from './fs.utils';
 
 const packageManagerInit = async (packageManager: string, projectPath: string, projectname: string) => {
     const spinner = ora(MESSAGES.PACKAGE_MANAGER_INSTALLATION_IN_PROGRESS);
@@ -36,6 +37,9 @@ const run = async (command: string, collect = false, cwd: string = process.cwd()
             child.stdout!.on('data', (data) =>
                 resolve(data.toString().replace(/\r\n|\n/, '')),
             );
+            child.stderr!.on('data', () => {
+                removeFolder(cwd);
+            })
         }
         child.on('close', (code) => {
             if (code === 0) {

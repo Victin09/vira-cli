@@ -6,12 +6,6 @@
 [![Typeorm](https://img.shields.io/badge/Typeorm-0.2.33-informational?logo=typeorm&color=FFAB00)](https://typeorm.io/#/)
 [![Mocha](https://img.shields.io/badge/Mocha-8.0.3-informational?logo=mocha&color=8A6343)](https://mochajs.org)
 
-[![Build](https://github.com/konfer-be/typeplate/actions/workflows/release.yml/badge.svg)](https://github.com/konfer-be/typeplate/actions/workflows/release.yml)
-[![Coverage Status](https://coveralls.io/repos/github/konfer-be/typeplate/badge.svg?branch=master)](https://coveralls.io/github/konfer-be/typeplate?branch=master)
-![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/konfer-be/typeplate/master)
-![Requires.io (branch)](https://img.shields.io/requires/github/konfer-be/typeplate/master)
-![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/konfer-be/typeplate)
-
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
 Ready to use RESTful API boilerplate builded with [Express.js](http://expressjs.com/en/4x/api.html), [Typescript](https://github.com/Microsoft/TypeScript)  [TypeORM](https://github.com/typeorm/typeorm) and [Mocha](https://mochajs.org/). 🤘
@@ -64,7 +58,7 @@ When you're with that, starting your project is a matter of minutes. :clock12:
 ### Step 1: install
 
 ```bash
-$ git clone https://github.com/konfer-be/typeplate.git path-to/your-project-name/
+$ git clone https://github.com/username/project-name.git path-to/your-project-name/
 ```
 
 ### Step 2: go to
@@ -85,7 +79,7 @@ Open the *./package.json* file and edit it with your own values.
 
 ### Step 5: setup environment
 
-Open *./dist/env/development.env* and fill the required env variables (uncommented in the file). See [env variables list](https://github.com/konfer-be/typeplate/wiki/Environment-variables) for more informations.
+Open *./dist/env/development.env* and fill the required env variables (uncommented in the file). See [env variables list](https://github.com/victin09/vira-cli/wiki/Environment-variables) for more informations.
 
 ```bash
 # Access token Secret passphrase

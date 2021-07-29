@@ -6,7 +6,7 @@ import constants from '../constants/project.constants';
 import initGitRepository from './git.utils';
 import generateProjectPath from './path.utils';
 import checkProjectFolder from './folder.utils';
-import copyFileSync from './fs.template';
+import { copyFolderSync } from './fs.utils';
 import packageManagerInit from './pm.utils';
 import MESSAGES from '../constants/messages.cosntants';
 
@@ -35,7 +35,7 @@ const generateExpressTemplate = async (projectOptions: ProjectAnswers) => {
         // copy express template
         let templatePathToGenerate = path.join(process.cwd(), 'src/templates/express/ts-typeorm');
         if (!projectOptions.projectExpress!.toLowerCase().includes('typeorm')) templatePathToGenerate = path.join(process.cwd(), 'src/templates/express/ts-no-typeorm');
-        copyFileSync(templatePathToGenerate, projectPath, projectPath);
+        copyFolderSync(templatePathToGenerate, projectPath, projectPath);
         // init git
         if (projectOptions.projectGit) initGitRepository(projectPath);
         // install with package manager
