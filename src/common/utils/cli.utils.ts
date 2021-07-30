@@ -16,10 +16,10 @@ const generate = async (projectOptions: ProjectAnswers) => {
             generateExpressTemplate(projectOptions);
             break;
         case constants.NESTJS:
-            console.info('NestJS project');
+            generateNestTemplate(projectOptions);
             break;
         case constants.REACT:
-            console.info('React project');
+            generateReactTemplate(projectOptions);
             break;
         case constants.VUE:
             console.info('Vue project');
@@ -36,17 +36,46 @@ const generateExpressTemplate = async (projectOptions: ProjectAnswers) => {
         let templatePathToGenerate = path.join(process.cwd(), 'src/templates/express/ts-typeorm');
         if (!projectOptions.projectExpress!.toLowerCase().includes('typeorm')) templatePathToGenerate = path.join(process.cwd(), 'src/templates/express/ts-no-typeorm');
         copyFolderSync(templatePathToGenerate, projectPath, projectPath);
-        // init git
-        if (projectOptions.projectGit) initGitRepository(projectPath);
         // install with package manager
         await packageManagerInit(projectOptions.projectPackageManager, projectPath, projectOptions.projectName);
+        // init git
+        if (projectOptions.projectGit) initGitRepository(projectPath);
         // Run get started messages
         getStartedMessages(projectPath, projectOptions.projectPackageManager);
     }
-
 }
 
+const generateReactTemplate = async (projectOptions: ProjectAnswers) => {
+    if (checkProjectFolder(projectOptions.projectName)) {
+        const projectPath = generateProjectPath(projectOptions.projectName);
+        // copy react template
+        copyFolderSync(path.join(process.cwd(), 'src/templates/react'), projectPath, projectPath);
+        // install with package manager
+        await packageManagerInit(projectOptions.projectPackageManager, projectPath, projectOptions.projectName);
+        // init git
+        if (projectOptions.projectGit) initGitRepository(projectPath);
+        // Run get started messages
+        getStartedMessages(projectPath, projectOptions.projectPackageManager);
+    }
+}
+
+const generateNestTemplate = async (projectOptions: ProjectAnswers) => {
+    if (checkProjectFolder(projectOptions.projectName)) {
+        const projectPath = generateProjectPath(projectOptions.projectName);
+        // copy nest template
+        copyFolderSync(path.join(process.cwd(), 'src/templates/nest'), projectPath, projectPath);
+        // install with package manager
+        await packageManagerInit(projectOptions.projectPackageManager, projectPath, projectOptions.projectName);
+        // init git
+        if (projectOptions.projectGit) initGitRepository(projectPath);
+        // Run get started messages
+        getStartedMessages(projectPath, projectOptions.projectPackageManager);
+    }
+}
+
+
 const getStartedMessages = (projectPath: string, packageManager: string) => {
+    console.info();
     console.info(MESSAGES.GET_STARTED_INFORMATION);
     console.info();
     console.info(chalk.gray(MESSAGES.CHANGE_DIR_COMMAND(projectPath)));

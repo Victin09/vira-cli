@@ -17,6 +17,13 @@ const packageManagerInit = async (packageManager: string, projectPath: string, p
                 process.exit();
             });
             await run('npm install --silent', true, projectPath);
+        } else if (packageManager.toLocaleLowerCase().includes('yarn')) {
+            const child: ChildProcess = spawn('yarn version');
+            child.stderr!.on('data', () => {
+                console.log(chalk.red(MESSAGES.PACKAGE_MANAGER_ERROR));
+                process.exit();
+            });
+            await run('yarn install', true, projectPath);
         }
         spinner.succeed(MESSAGES.PACKAGE_MANAGER_INSTALLATION_SUCCEED(projectname));
     } catch (error) {
