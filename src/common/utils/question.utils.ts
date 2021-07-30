@@ -25,7 +25,7 @@ const projectTypeQuestion = async (): Promise<string> => {
         name: 'type',
         type: 'list',
         message: messages.PROJECT_SELECTION_QUESTION,
-        choices: ['Express', 'NestJS (WIP)', 'React', 'Vue (WIP)'],
+        choices: ['Express', 'NestJS', 'React', 'Vue (WIP)'],
     });
 
     return projectType.type;
