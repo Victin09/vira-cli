@@ -17,6 +17,7 @@ module.exports = {
     'prettier/prettier': 'warn',
     '@typescript-eslint/adjacent-overload-signatures': 'off',
     '@typescript-eslint/array-type': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
     '@typescript-eslint/ban-types': [
       'error',
       {
