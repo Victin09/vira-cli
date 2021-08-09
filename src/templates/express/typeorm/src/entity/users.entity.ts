@@ -5,22 +5,22 @@ import { User } from '@interfaces/users.interface';
 @Entity()
 @Unique(['email'])
 export class UserEntity implements User {
-  @PrimaryGeneratedColumn()
-  id: number;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @Column()
-  @IsNotEmpty()
-  email: string;
+    @Column()
+    @IsNotEmpty()
+    email: string;
 
-  @Column()
-  @IsNotEmpty()
-  password: string;
+    @Column()
+    @IsNotEmpty()
+    password: string;
 
-  @Column()
-  @CreateDateColumn()
-  createdAt: Date;
+    @Column()
+    @CreateDateColumn()
+    createdAt: Date;
 
-  @Column()
-  @UpdateDateColumn()
-  updatedAt: Date;
+    @Column()
+    @UpdateDateColumn()
+    updatedAt: Date;
 }
