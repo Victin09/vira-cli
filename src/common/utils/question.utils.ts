@@ -8,16 +8,12 @@ import checkProjectName from './folder.utils';
 
 const initQuestions = async (): Promise<ProjectAnswers> => {
     const projectType: string = await projectTypeQuestion();
+    const projectSubType: string = await projectSubTypeQuestion(projectType);
     const projectName: string = await projetNameQuestion();
     const projectPackageManager: string = await projectPackageManagerQuestion();
     const projectGit: string = await projectGitQuestion();
 
-    if (projectType.toLowerCase() === constants.EXPRESS) {
-        const projectExpress: string = await projectExpressQuestion();
-        return { projectType, projectName, projectPackageManager, projectGit, projectExpress }
-    }
-
-    return { projectType, projectName, projectPackageManager, projectGit };
+    return { projectType, projectSubType, projectName, projectPackageManager, projectGit };
 }
 
 const projectTypeQuestion = async (): Promise<string> => {
@@ -67,15 +63,21 @@ const projectGitQuestion = async (): Promise<string> => {
     return projectGit.git;
 }
 
-const projectExpressQuestion = async (): Promise<string> => {
-    const projectExpress: inquirer.Answers = await inquirer.prompt({
-        name: 'express',
-        type: 'list',
-        message: messages.PROJECT_LIBRARY_SELECTION_QUESTION,
-        choices: ['TypeScript with TypeORM', 'TypeScript without TypeORM']
-    });
-
-    return projectExpress.express;
+const projectSubTypeQuestion = async (projectType: string): Promise<string> => {
+    let projectSubType: inquirer.Answers;
+    switch (projectType.toLowerCase()) {
+        case constants.EXPRESS:
+            projectSubType = await inquirer.prompt({
+                name: 'type',
+                type: 'list',
+                message: messages.PROJECT_SELECTION_QUESTION,
+                choices: ['Default', 'Knex', 'Mongoose', 'Prisma', 'Routing-controller', 'Sequelize', 'Typeorm'],
+            });
+            return projectSubType.type;
+     
+            default:
+                return new Promise((resolve, reject) => resolve(''));
+    }
 }
 
 export default initQuestions;

@@ -33,8 +33,30 @@ const generateExpressTemplate = async (projectOptions: ProjectAnswers) => {
     if (checkProjectFolder(projectOptions.projectName)) {
         const projectPath = generateProjectPath(projectOptions.projectName);
         // copy express template
-        let templatePathToGenerate = path.join(process.cwd(), 'src/templates/express/ts-typeorm');
-        if (!projectOptions.projectExpress!.toLowerCase().includes('typeorm')) templatePathToGenerate = path.join(process.cwd(), 'src/templates/express/ts-no-typeorm');
+        let templatePathToGenerate: string;
+        switch (projectOptions.projectSubType) {
+            case constants.EXPRESS_KNEX:
+                templatePathToGenerate = path.join(process.cwd(), `src/templates/express/${constants.EXPRESS_KNEX}`)
+                break;
+            case constants.EXPRESS_MONGOOSE:
+                templatePathToGenerate = path.join(process.cwd(), `src/templates/express/${constants.EXPRESS_MONGOOSE}`)
+                break;
+            case constants.EXPRESS_PRISMA:
+                templatePathToGenerate = path.join(process.cwd(), `src/templates/express/${constants.EXPRESS_PRISMA}`)
+                break;
+            case constants.EXPRESS_ROUTING_CONTROLLER:
+                templatePathToGenerate = path.join(process.cwd(), `src/templates/express/${constants.EXPRESS_ROUTING_CONTROLLER}`)
+                break;
+            case constants.EXPRESS_SEQUELIZE:
+                templatePathToGenerate = path.join(process.cwd(), `src/templates/express/${constants.EXPRESS_SEQUELIZE}`)
+                break;
+            case constants.EXPRESS_TYPEORM:
+                templatePathToGenerate = path.join(process.cwd(), `src/templates/express/${constants.EXPRESS_TYPEORM}`)
+                break;
+            default:
+                templatePathToGenerate = path.join(process.cwd(), `src/templates/express/${constants.EXPRESS_DEFAULT}`)
+                break;
+        }
         copyFolderSync(templatePathToGenerate, projectPath, projectPath);
         // install with package manager
         await packageManagerInit(projectOptions.projectPackageManager, projectPath, projectOptions.projectName);
