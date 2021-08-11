@@ -33,8 +33,11 @@ const generateExpressTemplate = async (projectOptions: ProjectAnswers) => {
     if (checkProjectFolder(projectOptions.projectName)) {
         const projectPath = generateProjectPath(projectOptions.projectName);
         // copy express template
-        let templatePathToGenerate: string;
-        switch (projectOptions.projectSubType) {
+        let templatePathToGenerate: string = '';
+        switch (projectOptions.projectSubType.toLowerCase()) {
+            case constants.EXPRESS_DEFAULT:
+                templatePathToGenerate = path.join(process.cwd(), `src/templates/express/${constants.EXPRESS_DEFAULT}`)
+                break;
             case constants.EXPRESS_KNEX:
                 templatePathToGenerate = path.join(process.cwd(), `src/templates/express/${constants.EXPRESS_KNEX}`)
                 break;
@@ -54,9 +57,10 @@ const generateExpressTemplate = async (projectOptions: ProjectAnswers) => {
                 templatePathToGenerate = path.join(process.cwd(), `src/templates/express/${constants.EXPRESS_TYPEORM}`)
                 break;
             default:
-                templatePathToGenerate = path.join(process.cwd(), `src/templates/express/${constants.EXPRESS_DEFAULT}`)
                 break;
         }
+        console.log(templatePathToGenerate);
+        
         copyFolderSync(templatePathToGenerate, projectPath, projectPath);
         // install with package manager
         await packageManagerInit(projectOptions.projectPackageManager, projectPath, projectOptions.projectName);
@@ -70,8 +74,13 @@ const generateExpressTemplate = async (projectOptions: ProjectAnswers) => {
 const generateReactTemplate = async (projectOptions: ProjectAnswers) => {
     if (checkProjectFolder(projectOptions.projectName)) {
         const projectPath = generateProjectPath(projectOptions.projectName);
+        let templatePathToGenerate: string;
+        if (projectOptions.projectSubType.toLowerCase() === constants.REACT_BOOTSTRAP)
+            templatePathToGenerate = path.join(process.cwd(), `src/templates/react/${constants.REACT_BOOTSTRAP}`)
+        else 
+            templatePathToGenerate = path.join(process.cwd(), `src/templates/react/${constants.REACT_TAILWIND}`)
         // copy react template
-        copyFolderSync(path.join(process.cwd(), 'src/templates/react'), projectPath, projectPath);
+        copyFolderSync(templatePathToGenerate, projectPath, projectPath);
         // install with package manager
         await packageManagerInit(projectOptions.projectPackageManager, projectPath, projectOptions.projectName);
         // init git

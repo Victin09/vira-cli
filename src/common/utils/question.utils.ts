@@ -74,9 +74,16 @@ const projectSubTypeQuestion = async (projectType: string): Promise<string> => {
                 choices: ['Default', 'Knex', 'Mongoose', 'Prisma', 'Routing-controller', 'Sequelize', 'Typeorm'],
             });
             return projectSubType.type;
-     
-            default:
-                return new Promise((resolve, reject) => resolve(''));
+        case constants.REACT:
+            projectSubType = await inquirer.prompt({
+                name: 'type',
+                type: 'list',
+                message: messages.PROJECT_SELECTION_QUESTION,
+                choices: ['Bootstrap', 'Tailwind CSS'],
+            });
+            return projectSubType.type;
+        default:
+            return new Promise((resolve, reject) => resolve(''));
     }
 }
 

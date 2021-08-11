@@ -8,8 +8,10 @@ const constants = {
     EXPRESS_MONGOOSE: 'mongoose',
     EXPRESS_PRISMA: 'prisma',
     EXPRESS_ROUTING_CONTROLLER: 'routing-controller',
-    EXPRESS_SEQUELIZE: 'sequielize',
-    EXPRESS_TYPEORM: 'typeorm'
+    EXPRESS_SEQUELIZE: 'sequelize',
+    EXPRESS_TYPEORM: 'typeorm',
+    REACT_BOOTSTRAP: 'bootstrap',
+    REACT_TAILWIND: 'tailwind'
 }
 
 export default constants;
