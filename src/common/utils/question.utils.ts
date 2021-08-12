@@ -2,7 +2,7 @@ import inquirer from 'inquirer';
 import path from 'path';
 
 import ProjectAnswers from '../interfaces/answers.interface';
-import messages from '../constants/messages.cosntants';
+import messages from '../constants/messages.constants';
 import constants from '../constants/project.constants';
 import checkProjectName from './folder.utils';
 
@@ -80,6 +80,14 @@ const projectSubTypeQuestion = async (projectType: string): Promise<string> => {
                 type: 'list',
                 message: messages.PROJECT_SELECTION_QUESTION,
                 choices: ['Bootstrap', 'Tailwind CSS'],
+            });
+            return projectSubType.type;
+        case constants.VUE:
+            projectSubType = await inquirer.prompt({
+                name: 'type',
+                type: 'list',
+                message: messages.PROJECT_SELECTION_QUESTION,
+                choices: ['Default', 'Composition API'],
             });
             return projectSubType.type;
         default:

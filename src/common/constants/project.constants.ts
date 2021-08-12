@@ -11,7 +11,9 @@ const constants = {
     EXPRESS_SEQUELIZE: 'sequelize',
     EXPRESS_TYPEORM: 'typeorm',
     REACT_BOOTSTRAP: 'bootstrap',
-    REACT_TAILWIND: 'tailwind'
+    REACT_TAILWIND: 'tailwind',
+    VUE_DEFAULT: 'default',
+    VUE_COMPOSITION: 'composition-api'
 }
 
 export default constants;

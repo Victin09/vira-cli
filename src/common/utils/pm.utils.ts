@@ -2,7 +2,7 @@ import { ChildProcess, spawn, SpawnOptions } from 'child_process';
 import ora from 'ora';
 import chalk from 'chalk';
 
-import MESSAGES from '../constants/messages.cosntants';
+import MESSAGES from '../constants/messages.constants';
 import { removeFolder } from './fs.utils';
 
 const packageManagerInit = async (packageManager: string, projectPath: string, projectname: string) => {

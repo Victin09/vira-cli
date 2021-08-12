@@ -1,7 +1,7 @@
 import fs from 'fs';
 import ora from 'ora';
 
-import messages from '../constants/messages.cosntants';
+import messages from '../constants/messages.constants';
 
 const gitIgnore = `# Logs
 logs

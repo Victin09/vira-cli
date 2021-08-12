@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 
-import messages from '../constants/messages.cosntants';
+import messages from '../constants/messages.constants';
 
 const checkProjectFolder = (folderName: string): boolean => {
     const currentPath = path.basename(process.cwd());

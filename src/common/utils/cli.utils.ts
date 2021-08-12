@@ -8,7 +8,7 @@ import generateProjectPath from './path.utils';
 import checkProjectFolder from './folder.utils';
 import { copyFolderSync } from './fs.utils';
 import packageManagerInit from './pm.utils';
-import MESSAGES from '../constants/messages.cosntants';
+import MESSAGES from '../constants/messages.constants';
 
 const generate = async (projectOptions: ProjectAnswers) => {
     switch (projectOptions.projectType.toLowerCase()) {
@@ -22,7 +22,7 @@ const generate = async (projectOptions: ProjectAnswers) => {
             generateReactTemplate(projectOptions);
             break;
         case constants.VUE:
-            console.info('Vue project');
+            generateVueTemplate(projectOptions);
             break;
         default:
             break;
@@ -71,6 +71,20 @@ const generateExpressTemplate = async (projectOptions: ProjectAnswers) => {
     }
 }
 
+const generateNestTemplate = async (projectOptions: ProjectAnswers) => {
+    if (checkProjectFolder(projectOptions.projectName)) {
+        const projectPath = generateProjectPath(projectOptions.projectName);
+        // copy nest template
+        copyFolderSync(path.join(process.cwd(), 'src/templates/nest'), projectPath, projectPath);
+        // install with package manager
+        await packageManagerInit(projectOptions.projectPackageManager, projectPath, projectOptions.projectName);
+        // init git
+        if (projectOptions.projectGit) initGitRepository(projectPath);
+        // Run get started messages
+        getStartedMessages(projectPath, projectOptions.projectPackageManager);
+    }
+}
+
 const generateReactTemplate = async (projectOptions: ProjectAnswers) => {
     if (checkProjectFolder(projectOptions.projectName)) {
         const projectPath = generateProjectPath(projectOptions.projectName);
@@ -90,11 +104,16 @@ const generateReactTemplate = async (projectOptions: ProjectAnswers) => {
     }
 }
 
-const generateNestTemplate = async (projectOptions: ProjectAnswers) => {
+const generateVueTemplate = async (projectOptions: ProjectAnswers) => {
     if (checkProjectFolder(projectOptions.projectName)) {
         const projectPath = generateProjectPath(projectOptions.projectName);
-        // copy nest template
-        copyFolderSync(path.join(process.cwd(), 'src/templates/nest'), projectPath, projectPath);
+        let templatePathToGenerate: string;
+        if (projectOptions.projectSubType.toLowerCase() === constants.VUE_DEFAULT)
+            templatePathToGenerate = path.join(process.cwd(), `src/templates/vue/${constants.VUE_DEFAULT}`)
+        else 
+            templatePathToGenerate = path.join(process.cwd(), `src/templates/vue/${constants.VUE_COMPOSITION}`)
+        // copy react template
+        copyFolderSync(templatePathToGenerate, projectPath, projectPath);
         // install with package manager
         await packageManagerInit(projectOptions.projectPackageManager, projectPath, projectOptions.projectName);
         // init git
@@ -103,7 +122,6 @@ const generateNestTemplate = async (projectOptions: ProjectAnswers) => {
         getStartedMessages(projectPath, projectOptions.projectPackageManager);
     }
 }
-
 
 const getStartedMessages = (projectPath: string, packageManager: string) => {
     console.info();
