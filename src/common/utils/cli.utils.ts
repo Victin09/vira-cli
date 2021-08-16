@@ -108,10 +108,10 @@ const generateVueTemplate = async (projectOptions: ProjectAnswers) => {
     if (checkProjectFolder(projectOptions.projectName)) {
         const projectPath = generateProjectPath(projectOptions.projectName);
         let templatePathToGenerate: string;
-        if (projectOptions.projectSubType.toLowerCase() === constants.VUE_DEFAULT)
-            templatePathToGenerate = path.join(process.cwd(), `src/templates/vue/${constants.VUE_DEFAULT}`)
+        if (projectOptions.projectSubType.toLowerCase() === constants.VUE_BOOTSTRAP)
+            templatePathToGenerate = path.join(process.cwd(), `src/templates/vue/${constants.VUE_BOOTSTRAP}`)
         else 
-            templatePathToGenerate = path.join(process.cwd(), `src/templates/vue/${constants.VUE_COMPOSITION}`)
+            templatePathToGenerate = path.join(process.cwd(), `src/templates/vue/${constants.VUE_TAILWIND}`)
         // copy react template
         copyFolderSync(templatePathToGenerate, projectPath, projectPath);
         // install with package manager

@@ -87,7 +87,7 @@ const projectSubTypeQuestion = async (projectType: string): Promise<string> => {
                 name: 'type',
                 type: 'list',
                 message: messages.PROJECT_SELECTION_QUESTION,
-                choices: ['Default', 'Composition API'],
+                choices: ['Bootstrap', 'Tailwind CSS'],
             });
             return projectSubType.type;
         default:

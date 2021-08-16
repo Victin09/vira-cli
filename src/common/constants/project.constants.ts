@@ -12,8 +12,8 @@ const constants = {
     EXPRESS_TYPEORM: 'typeorm',
     REACT_BOOTSTRAP: 'bootstrap',
     REACT_TAILWIND: 'tailwind',
-    VUE_DEFAULT: 'default',
-    VUE_COMPOSITION: 'composition-api'
+    VUE_BOOTSTRAP: 'bootstrap',
+    VUE_TAILWIND: 'tailwind'
 }
 
 export default constants;
