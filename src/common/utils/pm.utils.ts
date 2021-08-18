@@ -11,7 +11,7 @@ const packageManagerInit = async (packageManager: string, projectPath: string, p
     spinner.start();
     try {
         if (packageManager.toLowerCase().includes('npm')) {
-            const child: ChildProcess = spawn('npm', ['-v']);
+            const child: ChildProcess = spawn(/^win/.test(process.platform) ? 'npm.cmd' : 'npm', ['-v']);
             child.stderr!.on('data', () => {
                 console.log(chalk.red(MESSAGES.PACKAGE_MANAGER_ERROR));
                 process.exit();
@@ -27,6 +27,8 @@ const packageManagerInit = async (packageManager: string, projectPath: string, p
         }
         spinner.succeed(MESSAGES.PACKAGE_MANAGER_INSTALLATION_SUCCEED(projectname));
     } catch (error) {
+        console.log('error', error);
+        
         spinner.fail();
     }
 }

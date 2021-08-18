@@ -8,4 +8,4 @@ const bootstrap = async () => {
     generate(answers);
 }
 
-export default bootstrap;
+bootstrap();
