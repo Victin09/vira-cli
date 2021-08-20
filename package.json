@@ -1,17 +1,19 @@
 {
   "name": "vira-cli",
-  "version": "1.0.0",
+  "version": "1.0.7",
   "description": "A NodeJS CLI",
-  "main": "lib/bin/vira-cli.js",
+  "main": "./lib/bin/vira-cli.js",
   "preferGlobal": true,
   "bin": {
-    "vira-cli": "lib/bin/vira-cli.js"
+    "vira-cli": "./lib/bin/vira-cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node ./src/app.ts",
     "start": "node ./lib/bin/vira-cli.js",
-    "build": "tsc -p ."
+    "build": "npm run clean && tsc && npm run postbuild",
+    "clean": "rimraf lib/",
+    "postbuild": "mkdir -p lib/src/templates && cp -r src/templates/* lib/src/templates"
   },
   "keywords": [],
   "author": "Victor Gomez",

@@ -36,25 +36,25 @@ const generateExpressTemplate = async (projectOptions: ProjectAnswers) => {
         let templatePathToGenerate: string = '';
         switch (projectOptions.projectSubType.toLowerCase()) {
             case constants.EXPRESS_DEFAULT:
-                templatePathToGenerate = path.join(process.cwd(), `src/templates/express/${constants.EXPRESS_DEFAULT}`)
+                templatePathToGenerate = path.join(path.join(__dirname, '../../'), `templates/express/${constants.EXPRESS_DEFAULT}`)
                 break;
             case constants.EXPRESS_KNEX:
-                templatePathToGenerate = path.join(process.cwd(), `src/templates/express/${constants.EXPRESS_KNEX}`)
+                templatePathToGenerate = path.join(path.join(__dirname, '../../'), `templates/express/${constants.EXPRESS_KNEX}`)
                 break;
             case constants.EXPRESS_MONGOOSE:
-                templatePathToGenerate = path.join(process.cwd(), `src/templates/express/${constants.EXPRESS_MONGOOSE}`)
+                templatePathToGenerate = path.join(path.join(__dirname, '../../'), `templates/express/${constants.EXPRESS_MONGOOSE}`)
                 break;
             case constants.EXPRESS_PRISMA:
-                templatePathToGenerate = path.join(process.cwd(), `src/templates/express/${constants.EXPRESS_PRISMA}`)
+                templatePathToGenerate = path.join(path.join(__dirname, '../../'), `templates/express/${constants.EXPRESS_PRISMA}`)
                 break;
             case constants.EXPRESS_ROUTING_CONTROLLER:
-                templatePathToGenerate = path.join(process.cwd(), `src/templates/express/${constants.EXPRESS_ROUTING_CONTROLLER}`)
+                templatePathToGenerate = path.join(path.join(__dirname, '../../'), `templates/express/${constants.EXPRESS_ROUTING_CONTROLLER}`)
                 break;
             case constants.EXPRESS_SEQUELIZE:
-                templatePathToGenerate = path.join(process.cwd(), `src/templates/express/${constants.EXPRESS_SEQUELIZE}`)
+                templatePathToGenerate = path.join(path.join(__dirname, '../../'), `templates/express/${constants.EXPRESS_SEQUELIZE}`)
                 break;
             case constants.EXPRESS_TYPEORM:
-                templatePathToGenerate = path.join(process.cwd(), `src/templates/express/${constants.EXPRESS_TYPEORM}`)
+                templatePathToGenerate = path.join(path.join(__dirname, '../../'), `templates/express/${constants.EXPRESS_TYPEORM}`)
                 break;
             default:
                 break;
@@ -73,7 +73,7 @@ const generateNestTemplate = async (projectOptions: ProjectAnswers) => {
     if (checkProjectFolder(projectOptions.projectName)) {
         const projectPath = generateProjectPath(projectOptions.projectName);
         // copy nest template
-        copyFolderSync(path.join(process.cwd(), 'src/templates/nest'), projectPath, projectPath);
+        copyFolderSync(path.join(path.join(__dirname, '../../'), 'templates/nest'), projectPath, projectPath);
         // init git
         if (projectOptions.projectGit) initGitRepository(projectPath);
         // install with package manager
@@ -88,9 +88,9 @@ const generateReactTemplate = async (projectOptions: ProjectAnswers) => {
         const projectPath = generateProjectPath(projectOptions.projectName);
         let templatePathToGenerate: string;
         if (projectOptions.projectSubType.toLowerCase() === constants.REACT_BOOTSTRAP)
-            templatePathToGenerate = path.join(process.cwd(), `src/templates/react/${constants.REACT_BOOTSTRAP}`)
+            templatePathToGenerate = path.join(path.join(__dirname, '../../'), `templates/react/${constants.REACT_BOOTSTRAP}`)
         else 
-            templatePathToGenerate = path.join(process.cwd(), `src/templates/react/${constants.REACT_TAILWIND}`)
+            templatePathToGenerate = path.join(path.join(__dirname, '../../'), `templates/react/${constants.REACT_TAILWIND}`)
         // copy react template
         copyFolderSync(templatePathToGenerate, projectPath, projectPath);
         // init git
@@ -107,9 +107,9 @@ const generateVueTemplate = async (projectOptions: ProjectAnswers) => {
         const projectPath = generateProjectPath(projectOptions.projectName);
         let templatePathToGenerate: string;
         if (projectOptions.projectSubType.toLowerCase() === constants.VUE_BOOTSTRAP)
-            templatePathToGenerate = path.join(process.cwd(), `src/templates/vue/${constants.VUE_BOOTSTRAP}`)
+            templatePathToGenerate = path.join(path.join(__dirname, '../../'), `templates/vue/${constants.VUE_BOOTSTRAP}`)
         else 
-            templatePathToGenerate = path.join(process.cwd(), `src/templates/vue/${constants.VUE_TAILWIND}`)
+            templatePathToGenerate = path.join(path.join(__dirname, '../../'), `templates/vue/${constants.VUE_TAILWIND}`)
         // copy react template
         copyFolderSync(templatePathToGenerate, projectPath, projectPath);
         // init git
