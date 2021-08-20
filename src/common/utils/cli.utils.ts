@@ -59,13 +59,11 @@ const generateExpressTemplate = async (projectOptions: ProjectAnswers) => {
             default:
                 break;
         }
-        console.log(templatePathToGenerate);
-        
         copyFolderSync(templatePathToGenerate, projectPath, projectPath);
-        // install with package manager
-        await packageManagerInit(projectOptions.projectPackageManager, projectPath, projectOptions.projectName);
         // init git
         if (projectOptions.projectGit) initGitRepository(projectPath);
+        // install with package manager
+        await packageManagerInit(projectOptions.projectPackageManager, projectPath, projectOptions.projectName);
         // Run get started messages
         getStartedMessages(projectPath, projectOptions.projectPackageManager);
     }
@@ -76,10 +74,10 @@ const generateNestTemplate = async (projectOptions: ProjectAnswers) => {
         const projectPath = generateProjectPath(projectOptions.projectName);
         // copy nest template
         copyFolderSync(path.join(process.cwd(), 'src/templates/nest'), projectPath, projectPath);
-        // install with package manager
-        await packageManagerInit(projectOptions.projectPackageManager, projectPath, projectOptions.projectName);
         // init git
         if (projectOptions.projectGit) initGitRepository(projectPath);
+        // install with package manager
+        await packageManagerInit(projectOptions.projectPackageManager, projectPath, projectOptions.projectName);
         // Run get started messages
         getStartedMessages(projectPath, projectOptions.projectPackageManager);
     }
@@ -95,10 +93,10 @@ const generateReactTemplate = async (projectOptions: ProjectAnswers) => {
             templatePathToGenerate = path.join(process.cwd(), `src/templates/react/${constants.REACT_TAILWIND}`)
         // copy react template
         copyFolderSync(templatePathToGenerate, projectPath, projectPath);
-        // install with package manager
-        await packageManagerInit(projectOptions.projectPackageManager, projectPath, projectOptions.projectName);
         // init git
         if (projectOptions.projectGit) initGitRepository(projectPath);
+        // install with package manager
+        await packageManagerInit(projectOptions.projectPackageManager, projectPath, projectOptions.projectName);
         // Run get started messages
         getStartedMessages(projectPath, projectOptions.projectPackageManager);
     }
@@ -114,10 +112,10 @@ const generateVueTemplate = async (projectOptions: ProjectAnswers) => {
             templatePathToGenerate = path.join(process.cwd(), `src/templates/vue/${constants.VUE_TAILWIND}`)
         // copy react template
         copyFolderSync(templatePathToGenerate, projectPath, projectPath);
-        // install with package manager
-        await packageManagerInit(projectOptions.projectPackageManager, projectPath, projectOptions.projectName);
         // init git
         if (projectOptions.projectGit) initGitRepository(projectPath);
+        // install with package manager
+        await packageManagerInit(projectOptions.projectPackageManager, projectPath, projectOptions.projectName);
         // Run get started messages
         getStartedMessages(projectPath, projectOptions.projectPackageManager);
     }
