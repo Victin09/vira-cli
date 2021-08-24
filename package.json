@@ -1,6 +1,6 @@
 {
   "name": "vira-cli",
-  "version": "1.0.7",
+  "version": "1.1.5",
   "description": "A NodeJS CLI",
   "main": "./lib/bin/vira-cli.js",
   "preferGlobal": true,
