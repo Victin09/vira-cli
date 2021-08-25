@@ -1,32 +1,17 @@
 {
     "compilerOptions": {
-        "moduleResolution": "node",
-        "esModuleInterop": true,
         "outDir": "./dist/",
+        "sourceMap": true,
+        "strict": true,
+        "noImplicitReturns": true,
         "noImplicitAny": true,
-        "module": "ES2015",
-        "target": "ES5",
-        "jsx": "react",
-        "lib": [
-            "esnext",
-            "dom"
-        ],
+        "module": "es6",
+        "moduleResolution": "node",
+        "target": "es5",
         "allowJs": true,
-        "baseUrl": "./",
-        "paths": {
-            "@components/*": [
-                "src/components/*"
-            ],
-            "@views/*": [
-                "src/views/*"
-            ],
-            "@routes/*": [
-                "src/routes/"
-            ]
-        },
+        "jsx": "react",
     },
-    "exclude": [
-        "node_modules",
-        "dist",
+    "include": [
+        "./src/**/*"
     ]
 }

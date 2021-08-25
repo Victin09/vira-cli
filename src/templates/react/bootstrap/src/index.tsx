@@ -1,16 +1,8 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOM from "react-dom";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle';
+import App from './App';
+import "./styles.css";
 
-import './styles/index.scss';
-
-import App from './app';
-
-ReactDOM.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>,
-    document.getElementById('app'),
-);
+var mountNode = document.getElementById("app");
+ReactDOM.render(<App name="Jane" />, mountNode);
