@@ -73,7 +73,7 @@ const generateNestTemplate = async (projectOptions: ProjectAnswers) => {
     if (checkProjectFolder(projectOptions.projectName)) {
         const projectPath = generateProjectPath(projectOptions.projectName);
         // copy nest template
-        copyFolderSync(path.join(path.join(__dirname, '../../'), 'templates/nest'), projectPath, projectPath);
+        copyFolderSync(path.join(path.join(__dirname, '../../'), 'templates/nest/basic'), projectPath, projectPath);
         // init git
         if (projectOptions.projectGit) initGitRepository(projectPath);
         // install with package manager
